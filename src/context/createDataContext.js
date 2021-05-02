@@ -6,7 +6,7 @@ export default (reducer, actions, initialState) => {
   const Provider = ({ children }) => {
     const [state, dispatch] = useReducer(reducer, initialState);
 
-    // BoundActions === {list of actions made of }
+    // BoundActions === {list of actions from the Context file }
     const boundActions = {};
     for (let key in actions) {
       boundActions[key] = actions[key](dispatch);
