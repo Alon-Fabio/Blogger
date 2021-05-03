@@ -9,10 +9,15 @@ export default EditScreen = ({ navigation }) => {
   const { state, editBlogPost } = useContext(BlogContext);
   const BlogId = navigation.getParam("id");
   const BlogPost = state.find((Post) => Post.id === BlogId);
-  //   const [title, setTitle] = useState(BlogPost?.title || "");
-  //   const [content, setContent] = useState(BlogPost?.content || "");
 
-  return <BlogForm />;
+  return (
+    <BlogForm
+      initialState={{ title: BlogPost.title, content: BlogPost.content }}
+      onSubmitForm={(title, content) =>
+        editBlogPost(BlogId, title, content, () => navigation.pop())
+      }
+    />
+  );
 };
 
 const styles = StyleSheet.create({});

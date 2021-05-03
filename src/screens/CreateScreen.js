@@ -7,7 +7,13 @@ import BlogForm from "../components/BlogForm";
 
 export default CreateScreen = ({ navigation }) => {
   const { addBlogPost } = useContext(BlogContext);
-  return <BlogForm />;
+  return (
+    <BlogForm
+      onSubmitForm={(title, content) =>
+        addBlogPost(title, content, () => navigation.navigate("Index"))
+      }
+    />
+  );
 };
 
 const styles = StyleSheet.create({});
